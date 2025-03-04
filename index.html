@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>景沛ESG 碳排放計算器</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon-192.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .marquee {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee span {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.2rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+        .emoji {
+            font-size: 1.5rem;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .download-btn {
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee"><span>🚴‍♂️ 騎腳踏車 = 減碳，守護地球！🌍 減少碳排放，從現在開始！💚</span></div>
+    <div class="container">
+        <h1>🌿 景沛ESG 碳排放計算器</h1>
+        <form id="carbonForm">
+            <label for="electricity">⚡ 電費（度）：</label>
+            <input type="number" id="electricity" placeholder="輸入度數" required>
+            
+            <label for="water">💧 水費（度）：</label>
+            <input type="number" id="water" placeholder="輸入度數" required>
+            
+            <label for="transport">🚗 交通方式（公里）：</label>
+            <input type="number" id="transport" placeholder="輸入公里數" required>
+            
+            <label for="gasoline">⛽ 車用汽油（公升）：</label>
+            <input type="number" id="gasoline" placeholder="輸入公升數" required>
+            
+            <label for="diesel">🛢 柴油（公升）：</label>
+            <input type="number" id="diesel" placeholder="輸入公升數" required>
+            
+            <label for="naturalGas">🔥 天然氣（立方公尺）：</label>
+            <input type="number" id="naturalGas" placeholder="輸入立方公尺數" required>
+            
+            <label for="meal">🍽 團體膳食（餐數）：</label>
+            <input type="number" id="meal" placeholder="輸入餐數" required>
+            
+            <button type="button" onclick="calculateCarbon()">計算碳排放</button>
+        </form>
+        <div id="result" class="result-box"></div>
+        
+        <button class="download-btn" onclick="installPWA()">📥 下載應用程式</button>
+        
+        <div class="footer">
+            <p>🔗 <a href="https://jpesg.netlify.app/" target="_blank">景沛ESG 官網</a></p>
+            <p>🔗 <a href="https://sethjesus.github.io/JackyLiao/combined_dashboard.html" target="_blank">EMS 參考設計</a></p>
+            <p>🔗 <a href="https://data.moenv.gov.tw/dataset/detail/CFP_P_02" target="_blank">碳排放參考資料</a></p>
+            <p>📍 地址：新北市中和區中正路872號12樓</p>
+            <p>📞 連絡電話：02-22602388</p>
+        </div>
+    </div>
+</body>
+</html>
