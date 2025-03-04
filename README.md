@@ -10,7 +10,7 @@
 - **☁ Firebase 數據存儲**（未來規劃）
 
 ## ⚙️ 技術架構
-- **前端**：React + PWA
+- **前端**：HTML + PWA
 - **數據處理**：JavaScript / Python
 - **視覺化**：Chart.js / Recharts
 - **儲存**：Firebase (未來規劃)
@@ -24,7 +24,4 @@
 ## 📌 目標
 這款應用希望透過數據分析，提高大眾對 **環境永續 (ESG)** 的意識，並協助企業與個人追蹤碳足跡。
 
----
-🔹 **下一步**：  
-✅ **你可以點擊「Commit changes」**，將這份 README.md 提交到你的 GitHub 儲存庫！  
-🚀 你接下來要開始 **PWA 程式開發**，還是 **設計 App Logo**？
+-
