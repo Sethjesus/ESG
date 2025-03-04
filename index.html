@@ -82,7 +82,7 @@
             color: #007bff;
             text-decoration: none;
         }
-        .download-btn {
+        .download-btn, #copyUrlBtn {
             margin-top: 15px;
             padding: 14px;
             font-size: 1.2rem;
@@ -93,7 +93,7 @@
             border-radius: 5px;
             transition: 0.3s;
         }
-        .download-btn:hover {
+        .download-btn:hover, #copyUrlBtn:hover {
             background-color: #0056b3;
         }
     </style>
@@ -129,15 +129,14 @@
         <div id="result" class="result-box"></div>
         
         <button class="download-btn" onclick="installPWA()">📥 下載應用程式</button>
-        
+        <button id="copyUrlBtn">📋 長按複製網址</button>
+        <p id="copyMessage" style="display: none; color: green;">✅ 網址已複製！</p>
+
         <div class="footer">
             <p>🔗 <a href="https://jpesg.netlify.app/" target="_blank">景沛ESG 官網</a></p>
-            <p>🔗 <a href="https://sethjesus.github.io/JackyLiao/combined_dashboard.html" target="_blank">EMS 參考設計</a></p>
-            <p>🔗 <a href="https://data.moenv.gov.tw/dataset/detail/CFP_P_02" target="_blank">碳排放參考資料</a></p>
-            <p>📍 地址：新北市中和區中正路872號12樓</p>
-            <p>📞 連絡電話：02-22602388</p>
         </div>
     </div>
+
     <script>
         function calculateCarbon() {
             const inputs = document.querySelectorAll("#carbonForm input");
@@ -158,6 +157,21 @@
                 ${details}
                 <h3>🌍 總碳排放量：${totalCarbon.toFixed(2)} kg CO₂</h3>
             `;
+        }
+
+        document.getElementById('copyUrlBtn').addEventListener('mousedown', function() {
+            setTimeout(() => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    document.getElementById('copyMessage').style.display = 'block';
+                    setTimeout(() => document.getElementById('copyMessage').style.display = 'none', 2000);
+                });
+            }, 1000);
+        });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+            .then(reg => console.log("Service Worker 註冊成功", reg))
+            .catch(err => console.error("Service Worker 註冊失敗", err));
         }
     </script>
 </body>
