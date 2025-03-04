@@ -11,7 +11,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 10px;
             text-align: center;
             background-color: #f4f4f4;
         }
@@ -34,24 +34,24 @@
             to { transform: translateX(-100%); }
         }
         .container {
-            max-width: 400px;
-            margin: auto;
+            max-width: 95%;
+            margin: 10px auto;
             background: white;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         input {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 12px;
+            margin: 8px 0;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             font-size: 1.2rem;
             background-color: #28a745;
             color: white;
@@ -64,16 +64,17 @@
             background-color: #218838;
         }
         .result-box {
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 15px;
             background: #e3f2fd;
             border-radius: 5px;
+            font-size: 1rem;
         }
         .emoji {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         .footer {
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 0.9rem;
             color: #333;
         }
@@ -82,8 +83,8 @@
             text-decoration: none;
         }
         .download-btn {
-            margin-top: 20px;
-            padding: 12px;
+            margin-top: 15px;
+            padding: 14px;
             font-size: 1.2rem;
             background-color: #007bff;
             color: white;
@@ -137,5 +138,27 @@
             <p>📞 連絡電話：02-22602388</p>
         </div>
     </div>
+    <script>
+        function calculateCarbon() {
+            const inputs = document.querySelectorAll("#carbonForm input");
+            let totalCarbon = 0;
+            let details = "";
+            const factors = [0.495, 0.156, 0.251, 2.92, 3.32, 2.63, 1.29];
+            const labels = ["電力", "水", "交通", "車用汽油", "柴油", "天然氣", "團體膳食"];
+            
+            inputs.forEach((input, index) => {
+                const value = parseFloat(input.value) || 0;
+                const carbon = value * factors[index];
+                totalCarbon += carbon;
+                details += `<p class='emoji'>${labels[index]}：${carbon.toFixed(2)} kg CO₂</p>`;
+            });
+            
+            document.getElementById('result').innerHTML = `
+                <h3>🌱 碳排放明細：</h3>
+                ${details}
+                <h3>🌍 總碳排放量：${totalCarbon.toFixed(2)} kg CO₂</h3>
+            `;
+        }
+    </script>
 </body>
 </html>
